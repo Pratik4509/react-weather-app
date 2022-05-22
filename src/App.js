@@ -7,8 +7,8 @@ const App = () => {
   const [query, setQuery] = useState("");
   const [weatherInfo, setWeatherInfo] = useState({});
   const [weatherData, setWeatherData] = useState({});
-  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
+  // const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  // const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
   
   // const switchTheme = () =>{
   //   const newTheme = theme === 'light' ? 'dark' : 'light';
