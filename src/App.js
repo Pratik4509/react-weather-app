@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import { fetchweather } from "./Api/FetchApiData";
-import useLocalStorage from 'use-local-storage'
+// import useLocalStorage from 'use-local-storage'
 
 const App = () => {
   const [query, setQuery] = useState("");
@@ -41,7 +41,7 @@ const App = () => {
   };
 
   return (
-    <div className="main-container" data-theme={theme}>
+    <div className="main-container">
       <input
         type="text"
         className="search"
