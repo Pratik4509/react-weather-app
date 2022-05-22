@@ -32,12 +32,6 @@ const App = () => {
     // }
   };
 
-  function convertTime (d) {    
-    const dateObject = new Date(d)
-    const humanDateFormat = dateObject.toString();
-    return humanDateFormat; 
-  }
-
   return (
     <div className="main-container">
       <input
@@ -68,7 +62,7 @@ const App = () => {
                   <img
                     className="icon"
                     src={`https://openweathermap.org/img/wn/${weatherData['0'].weather['0'].icon}@2x.png`}
-                    // alt={weatherInfo.weather[0].description}
+                    alt={weatherData['0'].weather['0'].description}
                   />
                   <span>{weatherData['0'].weather['0'].description}</span>
                 </div>
@@ -140,6 +134,9 @@ const App = () => {
                     
                 </div>
                 )
+              }
+              else{
+                return null;
               }
               
             })}
