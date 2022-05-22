@@ -22,7 +22,7 @@
 
 .today-weather .temp {
     width: 30%;
-    background: #6d81fe;
+    background: var(--text-secondary);
     color: #fff;
     padding: 20px 40px;
     border-radius: 40px;
@@ -51,11 +51,15 @@
 
 .temp-details {
     width: 30%;
-    background: #6d81fe;
+    background: var(--text-secondary);
     color: #fff;
     padding: 20px;
     border-radius: 40px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.mob {
+    display: none;
 }
 
 .city-name {
@@ -138,8 +142,9 @@ html {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #fff;
+    background-color: var(--background);
     padding: 10px 20px 20px 20px;
+    color: var( --text-primary);
     width: 15%;
     border-radius: 40px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
@@ -219,6 +224,12 @@ html {
     .temp-details {
         width: 79%;
         margin: 20px;
+    }
+    .desktop {
+        display: none;
+    }
+    .mob {
+        display: block;
     }
     .future-tiles-container {
         display: flex;

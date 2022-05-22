@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import "./App.css";
 import { fetchweather } from "./Api/FetchApiData";
+import useLocalStorage from 'use-local-storage'
 
 const App = () => {
   const [query, setQuery] = useState("");
   const [weatherInfo, setWeatherInfo] = useState({});
   const [weatherData, setWeatherData] = useState({});
+  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
+  
+  const switchTheme = () =>{
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+  }
 
   // const [errorMessage, setErrorMessage] = useState();
 
@@ -33,7 +41,7 @@ const App = () => {
   };
 
   return (
-    <div className="main-container">
+    <div className="main-container" data-theme={theme}>
       <input
         type="text"
         className="search"
@@ -42,6 +50,8 @@ const App = () => {
         onChange={(event) => setQuery(event.target.value)}
         onKeyPress={search}
       />
+      {/* <button onClick={switchTheme}>
+        Switch to {theme === 'light' ? 'dark' : 'light'} theme</button> */}
       {/* {errorMessage && <div className="error"> {errorMessage} </div>} */}
       {weatherInfo.cod === '200' && (
         <>
@@ -75,7 +85,7 @@ const App = () => {
                 <span>{weatherInfo.city['name']}</span>
               </div>
             </div>
-            <div className="temp-details">
+            <div className="temp-details desktop">
               <h2>Details</h2>
               <div className="details">
                 <span>Max Temp</span>
@@ -97,6 +107,33 @@ const App = () => {
                 <span>Wind Speed</span>
                 <span>{weatherData['0'].wind.speed} kts</span>
               </div>
+            </div>
+
+
+            <div className="temp-details mob">
+              <details>
+                <summary>Details</summary>
+                <div className="details">
+                <span>Max Temp</span>
+                <span>{weatherData['0'].main.temp_max} &#176;C</span>
+              </div>
+              <div className="details">
+                <span>Min Temp</span>
+                <span>{weatherData['0'].main.temp_min} &#176;C</span>
+              </div>
+              <div className="details">
+                <span>Pressure</span>
+                <span>{weatherData['0'].main.pressure} p</span>
+              </div>
+              <div className="details">
+                <span>Humidity</span>
+                <span>{weatherData['0'].main.humidity} %</span>
+              </div>
+              <div className="details">
+                <span>Wind Speed</span>
+                <span>{weatherData['0'].wind.speed} kts</span>
+              </div>
+              </details>
             </div>
             
           </div>
